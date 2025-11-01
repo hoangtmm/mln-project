@@ -1,0 +1,136 @@
+/* =================== THEME TOKENS =================== */
+:root {
+  --radius: 16px;
+
+  /* Light */
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --text: #101522;
+  --muted: #5a627a;
+  --border: #e6ebf5;
+  --accent: #3558ff;
+  --accent-2: #00c7a4;
+  --shadow: 0 12px 32px rgba(16,21,34,.08);
+}
+
+html[data-theme='dark']{
+  --bg: #0b1020;
+  --surface: #0f1630;
+  --text: #e9eefc;
+  --muted: #a1a8c8;
+  --border: rgba(255,255,255,.10);
+  --accent: #4f7cff;
+  --accent-2: #2ad2c9;
+  --shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+html,body,#root{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family: Inter, system-ui, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* =================== LAYOUT =================== */
+.container{max-width:1120px; margin:0 auto; padding:24px 20px}
+.header{
+  position:sticky; top:0; z-index:50;
+  background: color-mix(in oklab, var(--bg) 65%, #0000);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav{display:flex; align-items:center; gap:14px; justify-content:space-between}
+.brand{font-weight:900; letter-spacing:.3px; white-space:nowrap}
+
+.nav-actions{display:flex; align-items:center; gap:8px}
+.theme-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--border); background:var(--surface); color:var(--text);
+  padding:8px 12px; border-radius:999px; cursor:pointer; box-shadow: var(--shadow);
+}
+.theme-btn svg{width:18px; height:18px}
+
+.tabs{display:flex; gap:8px; overflow:auto; padding:6px 0}
+.tab{
+  background:var(--surface); border:1px solid var(--border);
+  padding:8px 12px; border-radius:999px; cursor:pointer; white-space:nowrap;
+}
+.tab[aria-current="page"]{ background:var(--accent); color:#fff; border-color:transparent }
+
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius: var(--radius); padding:20px; box-shadow: var(--shadow);
+}
+.section{margin-top:22px}
+
+.h1{font-size:30px; margin:0 0 10px; line-height:1.2}
+.h2{font-size:22px; margin:0 0 10px}
+.p{color:var(--muted); line-height:1.65}
+.list{padding-left:20px}
+
+.button{
+  background:var(--accent); border:none; color:#fff; font-weight:600;
+  padding:10px 16px; border-radius:12px; cursor:pointer;
+}
+.button.ghost{
+  background:transparent; border:1px solid var(--border); color:var(--text);
+}
+
+.hero{ display:grid; grid-template-columns:1.15fr 1fr; gap:18px; align-items:center }
+.hero img{ width:100%; border-radius: var(--radius); border:1px solid var(--border) }
+
+/* ======= QUIZ ======= */
+.quiz .q{font-weight:600}
+.quiz .opt{
+  display:block; padding:10px 12px; border:1px solid var(--border);
+  border-radius:12px; margin:6px 0; cursor:pointer; background:var(--surface);
+}
+.quiz .opt.selected{ outline:2px solid var(--accent); background: color-mix(in oklab, var(--accent) 12%, var(--surface)) }
+
+.result{padding:12px;border-radius:12px;background:color-mix(in oklab, var(--accent-2) 12%, var(--surface));
+  border:1px solid color-mix(in oklab, var(--accent-2) 40%, var(--border));}
+
+/* ======= FOOTER ======= */
+.footer{opacity:.8; text-align:center; margin:30px 0}
+
+/* ======= Toast + Spinner + Pill (giữ từ bản trước) ======= */
+.toast {
+  position: fixed; top: 18px; right: 18px; z-index: 9999;
+  min-width: 280px; max-width: 360px;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 92%, #0000), color-mix(in oklab, var(--accent-2) 92%, #0000));
+  color: #fff; border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow);
+  display: flex; gap: 12px; align-items: flex-start; border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(10px); transform: translateY(-20px); opacity: 0; pointer-events: none; transition: all .35s ease;
+}
+.toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.toast .icon { width: 28px; height: 28px; border-radius: 999px; background: rgba(255,255,255,.22); display: grid; place-items: center; font-weight: 900;}
+.toast .title { font-weight: 900; letter-spacing:.2px }
+.toast .msg { opacity: .95; font-size: 13px; line-height: 1.4 }
+.toast .close { margin-left: auto; background: transparent; border: none; color: #fff; font-size: 18px; cursor: pointer; opacity:.85 }
+.progress { height: 3px; background: rgba(255,255,255,.3); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+.progress .bar { height: 100%; background: #fff; animation: load 2.2s ease infinite; }
+@keyframes load { 0%{ width: 0 } 50%{ width: 85% } 100%{ width: 0 } }
+.spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg) } }
+.button.loading { opacity:.85; pointer-events:none; display:inline-flex; align-items:center; gap:8px }
+.pill { display:inline-flex; align-items:center; gap:10px; padding: 6px 12px; border-radius:999px;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 16%, #0000), color-mix(in oklab, var(--accent-2) 12%, #0000));
+  border:1px solid var(--border); color:var(--text); font-size:12px; margin: 0 0 12px 0; }
+.pill .dot { width:8px; height:8px; border-radius:999px; background: var(--accent-2); box-shadow:0 0 0 0 color-mix(in oklab, var(--accent-2) 50%, #0000); animation: pulse 1.8s ease infinite }
+@keyframes pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(0,0,0,0) } 50%{ box-shadow:0 0 0 8px color-mix(in oklab, var(--accent-2) 28%, #0000) } }
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 980px){
+  .hero{ grid-template-columns:1fr; }
+  .tabs{ gap:6px }
+  .h1{ font-size:26px }
+}
+@media (max-width: 600px){
+  .container{ padding:18px 14px }
+  .card{ padding:16px }
+  .brand{ font-size:14px }
+  .h1{ font-size:22px }
+  .h2{ font-size:18px }
+}

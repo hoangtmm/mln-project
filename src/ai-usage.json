@@ -1,0 +1,38 @@
+[
+  {
+    "tool": "ChatGPT",
+    "purpose": "Gợi ý tóm tắt quan điểm Mác–Lênin về tôn giáo",
+    "prompt": "Tóm tắt ngắn gọn quan điểm Mác–Lênin về tôn giáo; nhấn mạnh không 'xóa bỏ' bằng mệnh lệnh; nêu phương châm thời kỳ quá độ.",
+    "used_in": "components/Theory.jsx",
+    "checker": "Tên thành viên A",
+    "verification": "Đối chiếu giáo trình CNXHKH (tr. 223–237) + chỉnh sửa câu chữ cho phù hợp.",
+    "date": "2025-10-19"
+  },
+  {
+    "tool": "ChatGPT",
+    "purpose": "Sinh nháp 15 câu hỏi đúng/sai về tôn giáo & CNXH",
+    "prompt": "Sinh 15 câu đúng/sai về: tự do tín ngưỡng, phân biệt tôn giáo & lợi dụng tôn giáo, căn nguyên xã hội của tôn giáo.",
+    "used_in": "components/questions.js (đã chọn 10 câu và biên tập lại)",
+    "checker": "Tên thành viên B",
+    "verification": "Loại bỏ câu nhập nhằng, kiểm chứng với giáo trình và chính sách hiện hành.",
+    "date": "2025-10-19"
+  },
+  {
+    "tool": "Browser SpeechSynthesis",
+    "purpose": "Đọc to (TTS) đoạn tóm tắt để tăng tiếp cận",
+    "prompt": "Không có – dùng API trình duyệt.",
+    "used_in": "components/Theory.jsx (nút 'Nghe tóm tắt')",
+    "checker": "Tên thành viên C",
+    "verification": "Nghe thử, chỉnh câu cho tự nhiên; không có nội dung nhạy cảm.",
+    "date": "2025-10-19"
+  },
+  {
+    "tool": "DALL·E / Designer",
+    "purpose": "Tạo banner minh họa chủ đề",
+    "prompt": "Banner tiếng Việt, tông xanh đậm, icon sách – cán cân – nguyên tử, tiêu đề 'HIỂU ĐÚNG: TÔN GIÁO & CNXH'.",
+    "used_in": "assets/banner.png",
+    "checker": "Tên thành viên D",
+    "verification": "Không dùng biểu tượng tôn giáo theo cách xúc phạm; chỉ mang tính biểu trưng học thuật.",
+    "date": "2025-10-19"
+  }
+]
